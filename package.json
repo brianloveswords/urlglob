@@ -1,0 +1,31 @@
+{
+  "name": "urlglob",
+  "version": "0.1.0",
+  "description": "Glob-like pattern matching on URLs",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "lru-cache": "~2.5.0"
+  },
+  "devDependencies": {
+    "tap": "~0.4.6"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brianloveswords/urlglob.git"
+  },
+  "keywords": [
+    "glob",
+    "url"
+  ],
+  "author": "Brian J Brennan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brianloveswords/urlglob/issues"
+  }
+}
