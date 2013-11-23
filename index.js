@@ -28,14 +28,27 @@ function urlglob(pattern, test) {
 }
 
 function convert(pattern) {
-  const escaped = pattern.replace(/([()[{+.$^\\|?])/g, '\\$1');
-  const placeholder = '%STAR%' + Date.now() + '%'
+
+  const safeLimitedGlob = '%LIMITED%' + Date.now() + '%'
+  const safeGlob = '%GLOB%' + Date.now() + '%'
   const catchAll = '.*?'
-  const regexp = '^' + escaped
-    .replace(/\\[*]/g, placeholder)
+
+
+  const regexp = '^' + pattern
+
+    // we want to store all "limited globs" so we don't escape
+    // them with the rest of the regexp characters
+    .replace(/\*\?/g, safeLimitedGlob)
+
+    // excape all of the rest of the regexp chars
+    .replace(/([()[{+.$^\\|?])/g, '\\$1')
+
+    .replace(/\\[*]/g, safeGlob)
     .replace(/\*/, catchAll)
-    .replace(RegExp(placeholder, 'g'), '*')
+    .replace(RegExp(safeGlob, 'g'), '*')
+    .replace(RegExp(safeLimitedGlob, 'g'), '[^/]+')
     + '\\/?$'
+
   return new RegExp(regexp)
 }
 

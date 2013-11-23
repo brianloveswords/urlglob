@@ -12,6 +12,9 @@ test('urlglob', function (t) {
   t.ok(urlglob.inCache('*'), 'should be in cache')
   t.ok(urlglob.inCache('/star/\\*'), 'should be in cache')
 
+  t.notOk(urlglob('/api/v2/*?.json', '/api/v2/all/users.json'), 'should not match')
+  t.ok(urlglob('/api/v2/*?.json', '/api/v2/users.json'), 'should match')
+
   console.dir(urlglob.cache.keys())
 
   t.end()
