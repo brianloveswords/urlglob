@@ -5,6 +5,7 @@ test('urlglob', function (t) {
   t.same(str(urlglob('*')), str(/^.*?\/?$/), 'should match all')
   t.same(str(urlglob('\\*lol.com\\*')), str(/^\*lol\.com\*\/?$/), 'should escape stuff')
 
+  t.ok(urlglob('/api', '/api/'), 'should add final slash')
   t.ok(urlglob('/food/*/cheese', '/food/sandwich/cheese'), 'should match cheese sandwich')
   t.ok(urlglob('/food/*/cheese', '/food/pizza/cheese/'), 'should match cheese pizza')
   t.ok(urlglob('/star/\\*', '/star/*'), 'should match literal star')
