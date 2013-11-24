@@ -1,4 +1,4 @@
-# urlglob
+# urlglob [![Build Status](https://secure.travis-ci.org/brianloveswords/urlglob.png?branch=master)](http://travis-ci.org/brianloveswords/urlglob)
 
 Convert glob-like urls to regexps and match on them.
 
