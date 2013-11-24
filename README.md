@@ -8,7 +8,6 @@ For efficiency `urlglob` stores both compiled regexps and matches in a LRU cache
 
 ```bash
 $ npm install urlglob
-$ npm test urlglob
 ```
 
 ## Usage
